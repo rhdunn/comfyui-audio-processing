@@ -35,6 +35,26 @@ class Spectrogram:
                  "hop_length": hop_length}, )
 
 
+class InverseSpectrogram:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {"required": {"spectrogram": ("SPECT",)}}
+
+    CATEGORY = "AudioProcessing/features"
+
+    RETURN_TYPES = ("AUDIO", )
+    FUNCTION = "inverse"
+
+    def inverse(self, spectrogram):
+        waveform = T.InverseSpectrogram(n_fft=spectrogram["n_fft"],
+                                        win_length=spectrogram["win_length"],
+                                        hop_length=spectrogram["hop_length"])(spectrogram["spectrogram"])
+        if len(waveform.shape) == 1:
+            waveform = waveform.unsqueeze(0)  # 1 channel (mono) audio
+        return ({"waveform": waveform.unsqueeze(0),
+                 "sample_rate": spectrogram["sample_rate"]}, )
+
+
 class PowerSpectrogram:
     @classmethod
     def INPUT_TYPES(s):
