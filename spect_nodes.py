@@ -23,7 +23,7 @@ class Spectrogram:
                     hop_length=-1):
         if win_length == -1: win_length = None
         if hop_length == -1: hop_length = None
-        waveform = audio["waveform"].movedim(1, -1).squeeze()
+        waveform = audio["waveform"].movedim(0, -1).squeeze()
         spectrogram = T.Spectrogram(n_fft=n_fft,
                                     win_length=win_length,
                                     hop_length=hop_length,
@@ -55,7 +55,7 @@ class PowerSpectrogram:
                     hop_length=-1):
         if win_length == -1: win_length = None
         if hop_length == -1: hop_length = None
-        waveform = audio["waveform"].movedim(1, -1).squeeze()
+        waveform = audio["waveform"].movedim(0, -1).squeeze()
         spectrogram = T.Spectrogram(n_fft=n_fft,
                                     win_length=win_length,
                                     hop_length=hop_length,
@@ -89,7 +89,7 @@ class MelSpectrogram:
                     hop_length=-1):
         if win_length == -1: win_length = None
         if hop_length == -1: hop_length = None
-        waveform = audio["waveform"].movedim(1, -1).squeeze()
+        waveform = audio["waveform"].movedim(0, -1).squeeze()
         spectrogram = T.MelSpectrogram(sample_rate=audio["sample_rate"],
                                        n_fft=n_fft,
                                        n_mels=n_mels,

@@ -28,7 +28,7 @@ class PlotWaveform:
     FUNCTION = "plot"
 
     def plot(self, audio, title="Waveform"):
-        waveform = audio["waveform"].movedim(1, -1).numpy()
+        waveform = audio["waveform"].movedim(0, -1).numpy()
         num_channels, num_frames, _ = waveform.shape
         time_axis = torch.arange(0, num_frames) / audio["sample_rate"]
         figure, axes = plt.subplots(num_channels, 1)
