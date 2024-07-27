@@ -82,13 +82,13 @@ class GriffinLim:
     FUNCTION = "griffin_lim"
 
     def griffin_lim(self, spectrogram, n_iter=32, momentum=0.99):
-        if spectrogram["stype"] != "power":
-            raise Exception(f"The spectrogram is not a power spectrogram: {spectrogram['stype']}")
+        if spectrogram["stype"] == "complex":
+            raise Exception(f"The spectrogram is not a real-valued spectrogram: {spectrogram['stype']}")
         waveform = T.GriffinLim(n_fft=spectrogram["n_fft"],
                                 n_iter=n_iter,
                                 win_length=spectrogram["win_length"],
                                 hop_length=spectrogram["hop_length"],
-                                power=2,
+                                power=SPECTROGRAM_TYPE_TO_POWER[spectrogram["stype"]],
                                 momentum=momentum)(spectrogram["spectrogram"])
         if len(waveform.shape) == 1:
             waveform = waveform.unsqueeze(0)  # 1 channel (mono) audio
