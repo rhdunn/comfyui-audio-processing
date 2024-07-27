@@ -9,21 +9,27 @@ from .spect_nodes import (
 )
 
 NODE_CLASS_MAPPINGS = {
-    "ComfyAudio.GriffinLim": GriffinLim,
-    "ComfyAudio.InverseSpectrogram": InverseSpectrogram,
+    # I/O
     "ComfyAudio.LoadAudio": LoadAudio,
-    "ComfyAudio.MelSpectrogram": MelSpectrogram,
+    # Plotting
     "ComfyAudio.PlotWaveform": PlotWaveform,
-    "ComfyAudio.PowerSpectrogram": PowerSpectrogram,
+    # Spectrogram
     "ComfyAudio.Spectrogram": Spectrogram,
+    "ComfyAudio.InverseSpectrogram": InverseSpectrogram,
+    "ComfyAudio.PowerSpectrogram": PowerSpectrogram,
+    "ComfyAudio.GriffinLim": GriffinLim,
+    "ComfyAudio.MelSpectrogram": MelSpectrogram,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "ComfyAudio.GriffinLim": "Griffin Lim",
-    "ComfyAudio.InverseSpectrogram": "Inverse Spectrogram",
+    # I/O
     "ComfyAudio.LoadAudio": "Load Audio From Path",
-    "ComfyAudio.MelSpectrogram": "Mel-scale Spectrogram",
+    # Plotting
     "ComfyAudio.PlotWaveform": "Plot Waveform",
-    "ComfyAudio.PowerSpectrogram": "Power Spectrogram",
+    # Spectrogram
     "ComfyAudio.Spectrogram": "Spectrogram",
+    "ComfyAudio.InverseSpectrogram": "Inverse Spectrogram",
+    "ComfyAudio.PowerSpectrogram": "Power Spectrogram",
+    "ComfyAudio.GriffinLim": "Griffin Lim",
+    "ComfyAudio.MelSpectrogram": "Mel-scale Spectrogram",
 }
