@@ -22,14 +22,15 @@ class PlotWaveform:
         return {"required": {"audio": ("AUDIO",)},
                 "optional": {"title": ("STRING", {"default": "Waveform"}),
                              "xlabel": ("STRING", {"default": "Time (s)"}),
-                             "ylabel": ("STRING", {"default": "Amplitude"}),}}
+                             "ylabel": ("STRING", {"default": "Amplitude"}),
+                             "show_grid": ("BOOLEAN", {"default": True}),}}
 
     CATEGORY = "AudioProcessing/plot"
 
     RETURN_TYPES = ("IMAGE", )
     FUNCTION = "plot"
 
-    def plot(self, audio, title="Waveform", xlabel="Time (s)", ylabel="Amplitude"):
+    def plot(self, audio, title="Waveform", xlabel="Time (s)", ylabel="Amplitude", show_grid=True):
         waveform = audio["waveform"].movedim(0, -1).numpy()
         num_channels, num_frames, _ = waveform.shape
         time_axis = torch.arange(0, num_frames) / audio["sample_rate"]
@@ -38,7 +39,7 @@ class PlotWaveform:
             axes = [axes]
         for c in range(num_channels):
             axes[c].plot(time_axis, waveform[c], linewidth=1)
-            axes[c].grid(True)
+            axes[c].grid(show_grid)
             axes[c].set_ylabel(ylabel)
             axes[c].set_xlabel(xlabel)
             if num_channels > 1:
@@ -53,14 +54,15 @@ class PlotSpectrogram:
         return {"required": {"spectrogram": ("SPECT",)},
                 "optional": {"title": ("STRING", {"default": "Spectrogram"}),
                              "xlabel": ("STRING", {"default": "Time (s)"}),
-                             "ylabel": ("STRING", {"default": "Frequency (Hz)"}),}}
+                             "ylabel": ("STRING", {"default": "Frequency (Hz)"}),
+                             "show_grid": ("BOOLEAN", {"default": False}),}}
 
     CATEGORY = "AudioProcessing/plot"
 
     RETURN_TYPES = ("IMAGE", )
     FUNCTION = "plot"
 
-    def plot(self, spectrogram, title="Spectrogram", xlabel="Time (s)", ylabel="Frequency (Hz)"):
+    def plot(self, spectrogram, title="Spectrogram", xlabel="Time (s)", ylabel="Frequency (Hz)", show_grid=False):
         if len(spectrogram["spectrogram"].shape) == 2:
             num_channels = 1
         else:
@@ -74,6 +76,7 @@ class PlotSpectrogram:
             else:
                 spect = spectrogram["spectrogram"][c].numpy()
             axes[c].pcolormesh(spect, shading="gouraud")
+            axes[c].grid(show_grid)
             axes[c].set_ylabel(ylabel)
             axes[c].set_xlabel(xlabel)
             if num_channels > 1:
