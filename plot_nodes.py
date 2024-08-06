@@ -45,6 +45,7 @@ class PlotWaveform:
             if num_channels > 1:
                 axes[c].set_title(f"Channel {c+1}")
         figure.suptitle(title)
+        figure.tight_layout()
         return (plot2image(), )
 
 
@@ -82,4 +83,5 @@ class PlotSpectrogram:
             if num_channels > 1:
                 axes[c].set_title(f"Channel {c+1}")
         figure.suptitle(title)
+        figure.tight_layout()
         return (plot2image(), )
