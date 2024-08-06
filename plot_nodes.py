@@ -64,6 +64,8 @@ class PlotSpectrogram:
     FUNCTION = "plot"
 
     def plot(self, spectrogram, title="Spectrogram", xlabel="Time (s)", ylabel="Frequency (Hz)", show_grid=False):
+        if spectrogram["stype"] == "complex":
+            raise Exception(f"The spectrogram is not a real-valued spectrogram: {spectrogram['stype']}")
         if len(spectrogram["spectrogram"].shape) == 2:
             num_channels = 1
         else:
