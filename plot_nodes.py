@@ -19,15 +19,17 @@ def plot2image():
 class PlotWaveform:
     @classmethod
     def INPUT_TYPES(s):
-        return {"required": {"audio": ("AUDIO",),
-                             "title": ("STRING", {"default": "Waveform"})}}
+        return {"required": {"audio": ("AUDIO",)},
+                "optional": {"title": ("STRING", {"default": "Waveform"}),
+                             "xlabel": ("STRING", {"default": "Time (s)"}),
+                             "ylabel": ("STRING", {"default": "Amplitude"}),}}
 
     CATEGORY = "AudioProcessing/plot"
 
     RETURN_TYPES = ("IMAGE", )
     FUNCTION = "plot"
 
-    def plot(self, audio, title="Waveform"):
+    def plot(self, audio, title="Waveform", xlabel="Time (s)", ylabel="Amplitude"):
         waveform = audio["waveform"].movedim(0, -1).numpy()
         num_channels, num_frames, _ = waveform.shape
         time_axis = torch.arange(0, num_frames) / audio["sample_rate"]
@@ -37,6 +39,8 @@ class PlotWaveform:
         for c in range(num_channels):
             axes[c].plot(time_axis, waveform[c], linewidth=1)
             axes[c].grid(True)
+            axes[c].set_ylabel(ylabel)
+            axes[c].set_xlabel(xlabel)
             if num_channels > 1:
                 axes[c].set_title(f"Channel {c+1}")
         figure.suptitle(title)
@@ -46,15 +50,17 @@ class PlotWaveform:
 class PlotSpectrogram:
     @classmethod
     def INPUT_TYPES(s):
-        return {"required": {"spectrogram": ("SPECT",),
-                             "title": ("STRING", {"default": "Spectrogram"})}}
+        return {"required": {"spectrogram": ("SPECT",)},
+                "optional": {"title": ("STRING", {"default": "Spectrogram"}),
+                             "xlabel": ("STRING", {"default": "Time (s)"}),
+                             "ylabel": ("STRING", {"default": "Frequency (Hz)"}),}}
 
     CATEGORY = "AudioProcessing/plot"
 
     RETURN_TYPES = ("IMAGE", )
     FUNCTION = "plot"
 
-    def plot(self, spectrogram, title="Spectrogram"):
+    def plot(self, spectrogram, title="Spectrogram", xlabel="Time (s)", ylabel="Frequency (Hz)"):
         if len(spectrogram["spectrogram"].shape) == 2:
             num_channels = 1
         else:
@@ -68,6 +74,8 @@ class PlotSpectrogram:
             else:
                 spect = spectrogram["spectrogram"][c].numpy()
             axes[c].pcolormesh(spect, shading="gouraud")
+            axes[c].set_ylabel(ylabel)
+            axes[c].set_xlabel(xlabel)
             if num_channels > 1:
                 axes[c].set_title(f"Channel {c+1}")
         figure.suptitle(title)
