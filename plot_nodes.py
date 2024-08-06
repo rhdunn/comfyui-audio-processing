@@ -41,3 +41,34 @@ class PlotWaveform:
                 axes[c].set_title(f"Channel {c+1}")
         figure.suptitle(title)
         return (plot2image(), )
+
+
+class PlotSpectrogram:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {"required": {"spectrogram": ("SPECT",),
+                             "title": ("STRING", {"default": "Spectrogram"})}}
+
+    CATEGORY = "AudioProcessing/plot"
+
+    RETURN_TYPES = ("IMAGE", )
+    FUNCTION = "plot"
+
+    def plot(self, spectrogram, title="Spectrogram"):
+        if len(spectrogram["spectrogram"].shape) == 2:
+            num_channels = 1
+        else:
+            num_channels, _, _ = spectrogram["spectrogram"].shape
+        figure, axes = plt.subplots(num_channels, 1)
+        if num_channels == 1:
+            axes = [axes]
+        for c in range(num_channels):
+            if num_channels == 1:
+                spect = spectrogram["spectrogram"].numpy()
+            else:
+                spect = spectrogram["spectrogram"][c].numpy()
+            axes[c].pcolormesh(spect, shading="gouraud")
+            if num_channels > 1:
+                axes[c].set_title(f"Channel {c+1}")
+        figure.suptitle(title)
+        return (plot2image(), )

@@ -18,9 +18,10 @@
 
 ## Plotting
 
-| Name          | Description                              |
-|---------------|------------------------------------------|
-| Plot Waveform | Plots the waveform of an `AUDIO` object. |
+| Name             | Description                                |
+|------------------|--------------------------------------------|
+| Plot Waveform    | Plots the waveform of an `AUDIO` object.   |
+| Plot Spectrogram | Plots the spectrogram of a `SPECT` object. |
 
 ## Spectrogram
 
