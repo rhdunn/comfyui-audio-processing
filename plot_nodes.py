@@ -76,7 +76,7 @@ class PlotSpectrogram:
                 spect = spectrogram["spectrogram"].numpy()
             else:
                 spect = spectrogram["spectrogram"][c].numpy()
-            axes[c].pcolormesh(spect, shading="gouraud")
+            axes[c].imshow(spect, origin="lower",aspect="auto", interpolation="nearest")
             axes[c].grid(show_grid)
             axes[c].set_ylabel(ylabel)
             axes[c].set_xlabel(xlabel)
