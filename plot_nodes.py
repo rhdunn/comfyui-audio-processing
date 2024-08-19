@@ -87,3 +87,26 @@ class PlotSpectrogram:
         figure.suptitle(title)
         figure.tight_layout()
         return (plot2image(), )
+
+
+class PlotFilterBank:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {"required": {"fbank": ("FILTER_BANK",)},
+                "optional": {"title": ("STRING", {"default": "Filter Bank"}),
+                             "xlabel": ("STRING", {"default": "filter bin"}),
+                             "ylabel": ("STRING", {"default": "frequency bin"}),}}
+
+    CATEGORY = "AudioProcessing/plot"
+
+    RETURN_TYPES = ("IMAGE", )
+    FUNCTION = "plot"
+
+    def plot(self, fbank, title="Filter Bank", xlabel="filter bin", ylabel="frequency bin"):
+        figure, axes = plt.subplots(1, 1)
+        axes.imshow(fbank['fbank'], origin="lower",aspect="auto", interpolation="nearest")
+        axes.set_ylabel(ylabel)
+        axes.set_xlabel(xlabel)
+        axes.set_title(title)
+        figure.tight_layout()
+        return (plot2image(), )
