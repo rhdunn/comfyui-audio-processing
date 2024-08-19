@@ -16,6 +16,12 @@
 |----------------------|-------------------------------------------------------------------------------------|
 | Load Audio From Path | Same as "Load Audio" but loads from a local path instead of an uploaded audio file. |
 
+## Filter Banks
+
+| Name                  | Description                     |
+|-----------------------|---------------------------------|
+| Mel-scale Filter Bank | Create a mel-scale filter bank. |
+
 ## Plotting
 
 | Name             | Description                                |
