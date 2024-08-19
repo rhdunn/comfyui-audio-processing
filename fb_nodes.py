@@ -7,9 +7,8 @@ import torchaudio.functional as F
 class MelScaleFilterBank:
     @classmethod
     def INPUT_TYPES(s):
-        return {"required": {"audio": ("AUDIO",)},
-                "optional": {"n_freqs": ("INT", {"default": 400, "min": 1, "max": 2**32}),
-                             "f_min": ("FLOAT", {"default": 0.0, "min": 0.0, "max": 96000.0, "step": 1.0}),
+        return {"required": {"spectrogram": ("SPECT",)},
+                "optional": {"f_min": ("FLOAT", {"default": 0.0, "min": 0.0, "max": 96000.0, "step": 1.0}),
                              "f_max": ("FLOAT", {"default": 44100.0, "min": 0.0, "max": 96000.0, "step": 1.0}),
                              "n_mels": ("INT", {"default": 128, "min": 1, "max": 2**32})}}
 
@@ -19,18 +18,18 @@ class MelScaleFilterBank:
     FUNCTION = "fbank"
 
     def fbank(self,
-              audio,
-              n_freqs=400,
+              spectrogram,
               f_min=0.0,
               f_max=44100.0,
               n_mels=128):
+        n_freqs = spectrogram["n_fft"] // 2 + 1
         fbank = F.melscale_fbanks(n_freqs=n_freqs,
                                   f_min=f_min,
                                   f_max=f_max,
                                   n_mels=n_mels,
-                                  sample_rate=audio["sample_rate"])
+                                  sample_rate=spectrogram["sample_rate"])
         return ({"fbank": fbank,
-                 "sample_rate": audio["sample_rate"],
+                 "sample_rate": spectrogram["sample_rate"],
                  "n_freqs": n_freqs,
                  "f_min": f_min,
                  "f_max": f_max,
