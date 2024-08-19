@@ -1,5 +1,6 @@
 # Copyright (C) 2024 Reece H. Dunn. SPDX-License-Identifier: GPL-3
 
+import torch
 import torchaudio.functional as F
 
 
@@ -34,3 +35,26 @@ class MelScaleFilterBank:
                  "f_min": f_min,
                  "f_max": f_max,
                  "n_mels": n_mels}, )
+
+
+class ApplyFilterBank:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {"required": {"spectrogram": ("SPECT",),
+                             "fbank": ("FILTER_BANK",)}}
+
+    CATEGORY = "AudioProcessing/filterbank"
+
+    RETURN_TYPES = ("SPECT", )
+    FUNCTION = "filter"
+
+    def filter(self, spectrogram, fbank):
+        spect = spectrogram["spectrogram"]
+        fb = fbank["fbank"]
+        filtered = torch.matmul(spect.transpose(-1, -2), fb).transpose(-1, -2)
+        return ({"spectrogram": filtered,
+                 "sample_rate": spectrogram["sample_rate"],
+                 "stype": spectrogram["stype"],
+                 "n_fft": spectrogram["n_fft"],
+                 "win_length": spectrogram["win_length"],
+                 "hop_length": spectrogram["hop_length"]}, )

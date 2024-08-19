@@ -18,9 +18,10 @@
 
 ## Filter Banks
 
-| Name                  | Description                     |
-|-----------------------|---------------------------------|
-| Mel-scale Filter Bank | Create a mel-scale filter bank. |
+| Name                  | Description                                         |
+|-----------------------|-----------------------------------------------------|
+| Mel-scale Filter Bank | Create a mel-scale filter bank.                     |
+| Apply Filter Bank     | Apply the specified filter bank to the spectrogram. |
 
 ## Plotting
 

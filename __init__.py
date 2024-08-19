@@ -1,6 +1,6 @@
 # Copyright (C) 2024 Reece H. Dunn. SPDX-License-Identifier: GPL-3
 
-from .fb_nodes import MelScaleFilterBank
+from .fb_nodes import (MelScaleFilterBank, ApplyFilterBank)
 from .io_nodes import LoadAudio
 from .plot_nodes import (PlotWaveform, PlotSpectrogram, PlotFilterBank)
 from .spect_nodes import (
@@ -12,6 +12,7 @@ from .spect_nodes import (
 NODE_CLASS_MAPPINGS = {
     # Filter Banks
     "ComfyAudio.MelScaleFilterBank": MelScaleFilterBank,
+    "ComfyAudio.ApplyFilterBank": ApplyFilterBank,
     # I/O
     "ComfyAudio.LoadAudio": LoadAudio,
     # Plotting
@@ -28,6 +29,7 @@ NODE_CLASS_MAPPINGS = {
 NODE_DISPLAY_NAME_MAPPINGS = {
     # Filter Banks
     "ComfyAudio.MelScaleFilterBank": "Mel-scale Filter Bank",
+    "ComfyAudio.ApplyFilterBank": "Apply Filter Bank",
     # I/O
     "ComfyAudio.LoadAudio": "Load Audio From Path",
     # Plotting
