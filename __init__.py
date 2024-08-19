@@ -6,7 +6,6 @@ from .plot_nodes import (PlotWaveform, PlotSpectrogram, PlotFilterBank)
 from .spect_nodes import (
     Spectrogram, InverseSpectrogram,
     GriffinLim,
-    MelSpectrogram
 )
 
 NODE_CLASS_MAPPINGS = {
@@ -23,7 +22,6 @@ NODE_CLASS_MAPPINGS = {
     "ComfyAudio.Spectrogram": Spectrogram,
     "ComfyAudio.InverseSpectrogram": InverseSpectrogram,
     "ComfyAudio.GriffinLim": GriffinLim,
-    "ComfyAudio.MelSpectrogram": MelSpectrogram,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
@@ -40,5 +38,4 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "ComfyAudio.Spectrogram": "Spectrogram",
     "ComfyAudio.InverseSpectrogram": "Inverse Spectrogram",
     "ComfyAudio.GriffinLim": "Griffin Lim",
-    "ComfyAudio.MelSpectrogram": "Mel-scale Spectrogram",
 }

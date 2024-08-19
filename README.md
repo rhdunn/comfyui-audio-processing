@@ -2,6 +2,7 @@
 > A collection of nodes for working with audio data.
 
 - [I/O](#io)
+- [Filter Banks](#filter-banks)
 - [Plotting](#plotting)
 - [Spectrogram](#spectrogram)
 - [License](#license)
@@ -38,15 +39,11 @@
 | Spectrogram           | Computes the spectrogram of a given `AUDIO` object.                            |
 | Inverse Spectrogram   | Converts a complex-valued spectrogram to `AUDIO`.                              |
 | Griffin Lim           | Converts a real-valued spectrogram to `AUDIO` using the Griffin-Lim algorithm. |
-| Mel-scale Spectrogram | Computes the mel-scale spectrogram of a given `AUDIO` object.                  |
 
 A spectrogram (`SPECT`) can be one of three types:
 1. `complex` &ndash; a complex number valued spectrogram;
 2. `magnitude` &ndash; a real valued spectrogram that is the absolute value of the `complex` spectrogram (power 1);
 3. `power` &ndash; a real valued spectrogram that is the square of the `magnitude` spectrogram (power 2);
-
-A mel-scale spectrogram (`MEL_SPECT`) is a `magnitude` or `power` spectrogram that has been converted
-to the mel audio scale.
 
 ## License
 Copyright (C) 2024 Reece H. Dunn
