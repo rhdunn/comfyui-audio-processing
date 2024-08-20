@@ -48,6 +48,7 @@ A spectrogram (`SPECT`) can be one of three types:
 
 | Name                  | Description                                         |
 |-----------------------|-----------------------------------------------------|
+| Linear Filter Bank    | Create a linear filter bank.                        |
 | Mel-scale Filter Bank | Create a mel-scale filter bank.                     |
 | Apply Filter Bank     | Apply the specified filter bank to the spectrogram. |
 | Plot Filter Bank      | Plots the `FILTER_BANK` object.                     |
