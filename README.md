@@ -6,6 +6,7 @@
   - [Complex-Valued Spectrograms](#complex-valued-spectrograms)
   - [Real-Valued Spectrograms](#real-valued-spectrograms)
 - [Filter Banks](#filter-banks)
+  - [Linear-scale Spectrograms](#linear-scale-spectrograms)
   - [Mel-scale Spectrograms](#mel-scale-spectrograms)
 - [License](#license)
 
@@ -52,6 +53,10 @@ A spectrogram (`SPECT`) can be one of three types:
 | Mel-scale Filter Bank | Create a mel-scale filter bank.                     |
 | Apply Filter Bank     | Apply the specified filter bank to the spectrogram. |
 | Plot Filter Bank      | Plots the `FILTER_BANK` object.                     |
+
+### Linear-scale Spectrograms
+
+[![Generating and plotting linear-scaled spectrograms](workflows/filter%20bank/linear-scale-spectrogram.png)](workflows/filter%20bank/linear-scale-spectrogram.json)
 
 ### Mel-scale Spectrograms
 
