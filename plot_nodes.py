@@ -53,7 +53,8 @@ class PlotSpectrogram:
     @classmethod
     def INPUT_TYPES(s):
         return {"required": {"spectrogram": ("SPECT",)},
-                "optional": {"title": ("STRING", {"default": "Spectrogram"}),
+                "optional": {"stype": (("magnitude", "power"), {"default": "power"}),
+                             "title": ("STRING", {"default": "Spectrogram"}),
                              "xlabel": ("STRING", {"default": "Time (s)"}),
                              "ylabel": ("STRING", {"default": "Frequency (Hz)"}),
                              "show_grid": ("BOOLEAN", {"default": False}),}}
@@ -63,9 +64,21 @@ class PlotSpectrogram:
     RETURN_TYPES = ("IMAGE", )
     FUNCTION = "plot"
 
-    def plot(self, spectrogram, title="Spectrogram", xlabel="Time (s)", ylabel="Frequency (Hz)", show_grid=False):
-        if spectrogram["stype"] == "complex":
-            raise Exception(f"The spectrogram is not a real-valued spectrogram: {spectrogram['stype']}")
+    def normalize(self, spectrogram, stype, target_stype):
+        ret = spectrogram
+        if stype == "complex": # complex to magnitude
+            ret = ret.abs()
+        if stype != "power" and target_stype == "power": # magnitude to power
+            ret = ret.pow(2)
+        return ret
+
+    def plot(self,
+             spectrogram,
+             stype="power",
+             title="Spectrogram",
+             xlabel="Time (s)",
+             ylabel="Frequency (Hz)",
+             show_grid=False):
         if len(spectrogram["spectrogram"].shape) == 2:
             num_channels = 1
         else:
@@ -75,9 +88,9 @@ class PlotSpectrogram:
             axes = [axes]
         for c in range(num_channels):
             if num_channels == 1:
-                spect = spectrogram["spectrogram"].numpy()
+                spect = self.normalize(spectrogram["spectrogram"], spectrogram["stype"], stype).numpy()
             else:
-                spect = spectrogram["spectrogram"][c].numpy()
+                spect = self.normalize(spectrogram["spectrogram"][c], spectrogram["stype"], stype).numpy()
             axes[c].imshow(spect, origin="lower",aspect="auto", interpolation="nearest")
             axes[c].grid(show_grid)
             axes[c].set_ylabel(ylabel)
