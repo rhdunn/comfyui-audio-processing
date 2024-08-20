@@ -1,0 +1,540 @@
+{
+  "last_node_id": 26,
+  "last_link_id": 36,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "LoadAudio",
+      "pos": [
+        737,
+        502
+      ],
+      "size": {
+        "0": 315,
+        "1": 124
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": [
+            1
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadAudio"
+      },
+      "widgets_values": [
+        null,
+        ""
+      ]
+    },
+    {
+      "id": 2,
+      "type": "ComfyAudio.Spectrogram",
+      "pos": [
+        1198,
+        502
+      ],
+      "size": {
+        "0": 315,
+        "1": 130
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SPECT",
+          "type": "SPECT",
+          "links": [
+            16,
+            36
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ComfyAudio.Spectrogram"
+      },
+      "widgets_values": [
+        "power",
+        400,
+        -1,
+        -1
+      ]
+    },
+    {
+      "id": 15,
+      "type": "ComfyAudio.PlotSpectrogram",
+      "pos": [
+        1198,
+        304
+      ],
+      "size": {
+        "0": 315,
+        "1": 154
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "spectrogram",
+          "type": "SPECT",
+          "link": 16
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            19
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ComfyAudio.PlotSpectrogram"
+      },
+      "widgets_values": [
+        "power",
+        "Spectrogram",
+        "Time (s)",
+        "Frequency (Hz)",
+        false
+      ]
+    },
+    {
+      "id": 17,
+      "type": "PreviewImage",
+      "pos": [
+        1532,
+        304
+      ],
+      "size": {
+        "0": 409,
+        "1": 327
+      },
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 19
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 19,
+      "type": "ComfyAudio.MelScaleFilterBank",
+      "pos": [
+        410.8158191610827,
+        945.7279458387213
+      ],
+      "size": {
+        "0": 315,
+        "1": 106
+      },
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "spectrogram",
+          "type": "SPECT",
+          "link": 29
+        }
+      ],
+      "outputs": [
+        {
+          "name": "FILTER_BANK",
+          "type": "FILTER_BANK",
+          "links": [
+            30,
+            32
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ComfyAudio.MelScaleFilterBank"
+      },
+      "widgets_values": [
+        0,
+        44100,
+        128
+      ]
+    },
+    {
+      "id": 21,
+      "type": "Reroute",
+      "pos": [
+        1086,
+        601
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 36
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "SPECT",
+          "links": [
+            29,
+            33
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 22,
+      "type": "ComfyAudio.PlotFilterBank",
+      "pos": [
+        410.8158191610827,
+        729.7279458387212
+      ],
+      "size": {
+        "0": 315,
+        "1": 106
+      },
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "fbank",
+          "type": "FILTER_BANK",
+          "link": 30
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            31
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ComfyAudio.PlotFilterBank"
+      },
+      "widgets_values": [
+        "Filter Bank",
+        "filter bin",
+        "frequency bin"
+      ]
+    },
+    {
+      "id": 23,
+      "type": "PreviewImage",
+      "pos": [
+        751.8158191610805,
+        721.7279458387212
+      ],
+      "size": {
+        "0": 409,
+        "1": 327
+      },
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 31
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 24,
+      "type": "ComfyAudio.ApplyFilterBank",
+      "pos": [
+        1202.600415039063,
+        733.0001220703119
+      ],
+      "size": {
+        "0": 216.59999084472656,
+        "1": 46
+      },
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "spectrogram",
+          "type": "SPECT",
+          "link": 33
+        },
+        {
+          "name": "fbank",
+          "type": "FILTER_BANK",
+          "link": 32
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SPECT",
+          "type": "SPECT",
+          "links": [
+            34
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ComfyAudio.ApplyFilterBank"
+      }
+    },
+    {
+      "id": 25,
+      "type": "ComfyAudio.PlotSpectrogram",
+      "pos": [
+        1195.600415039063,
+        892.0001220703119
+      ],
+      "size": {
+        "0": 315,
+        "1": 154
+      },
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "spectrogram",
+          "type": "SPECT",
+          "link": 34
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            35
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ComfyAudio.PlotSpectrogram"
+      },
+      "widgets_values": [
+        "power",
+        "Spectrogram",
+        "Time (s)",
+        "Frequency (Hz)",
+        false
+      ]
+    },
+    {
+      "id": 26,
+      "type": "PreviewImage",
+      "pos": [
+        1536.600415039063,
+        724.0001220703119
+      ],
+      "size": {
+        "0": 409,
+        "1": 327
+      },
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 35
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    }
+  ],
+  "links": [
+    [
+      1,
+      1,
+      0,
+      2,
+      0,
+      "AUDIO"
+    ],
+    [
+      16,
+      2,
+      0,
+      15,
+      0,
+      "SPECT"
+    ],
+    [
+      19,
+      15,
+      0,
+      17,
+      0,
+      "IMAGE"
+    ],
+    [
+      29,
+      21,
+      0,
+      19,
+      0,
+      "SPECT"
+    ],
+    [
+      30,
+      19,
+      0,
+      22,
+      0,
+      "FILTER_BANK"
+    ],
+    [
+      31,
+      22,
+      0,
+      23,
+      0,
+      "IMAGE"
+    ],
+    [
+      32,
+      19,
+      0,
+      24,
+      1,
+      "FILTER_BANK"
+    ],
+    [
+      33,
+      21,
+      0,
+      24,
+      0,
+      "SPECT"
+    ],
+    [
+      34,
+      24,
+      0,
+      25,
+      0,
+      "SPECT"
+    ],
+    [
+      35,
+      25,
+      0,
+      26,
+      0,
+      "IMAGE"
+    ],
+    [
+      36,
+      2,
+      0,
+      21,
+      0,
+      "*"
+    ]
+  ],
+  "groups": [
+    {
+      "title": "Spectrogram",
+      "bounding": [
+        1188,
+        230,
+        763,
+        412
+      ],
+      "color": "#3f789e",
+      "font_size": 24
+    },
+    {
+      "title": "Mel-scale Filter Bank",
+      "bounding": [
+        400,
+        648,
+        770,
+        414
+      ],
+      "color": "#3f789e",
+      "font_size": 24
+    },
+    {
+      "title": "Mel-scale Spectrogram",
+      "bounding": [
+        1186,
+        650,
+        770,
+        411
+      ],
+      "color": "#3f789e",
+      "font_size": 24
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.9090909090909091,
+      "offset": [
+        144.37206809644127,
+        92.07709575848611
+      ]
+    }
+  },
+  "version": 0.4
+}
