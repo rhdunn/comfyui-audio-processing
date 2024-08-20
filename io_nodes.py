@@ -11,7 +11,7 @@ class LoadAudio:
     def INPUT_TYPES(s):
         return {"required": {"audio": ("STRING",{"multiline":False})}}
 
-    CATEGORY = "AudioProcessing"
+    CATEGORY = "audio processing"
 
     RETURN_TYPES = ("AUDIO", )
     FUNCTION = "load"

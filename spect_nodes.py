@@ -21,7 +21,7 @@ class Spectrogram:
                              "win_length": ("INT", {"default": -1, "min": -1, "max": 2**32}),
                              "hop_length": ("INT", {"default": -1, "min": -1, "max": 2**32})}}
 
-    CATEGORY = "AudioProcessing/spectrogram"
+    CATEGORY = "audio processing/spectrogram"
 
     RETURN_TYPES = ("SPECT", )
     FUNCTION = "spectrogram"
@@ -52,7 +52,7 @@ class InverseSpectrogram:
     def INPUT_TYPES(s):
         return {"required": {"spectrogram": ("SPECT",)}}
 
-    CATEGORY = "AudioProcessing/spectrogram"
+    CATEGORY = "audio processing/spectrogram"
 
     RETURN_TYPES = ("AUDIO", )
     FUNCTION = "inverse"
@@ -76,7 +76,7 @@ class GriffinLim:
                 "optional": {"n_iter": ("INT", {"default": 32, "min": 1, "max": 2**32}),
                              "momentum": ("FLOAT", {"default": 0.99, "min": 0.0, "max": 1.0, "step": 0.01})}}
 
-    CATEGORY = "AudioProcessing/spectrogram"
+    CATEGORY = "audio processing/spectrogram"
 
     RETURN_TYPES = ("AUDIO", )
     FUNCTION = "griffin_lim"

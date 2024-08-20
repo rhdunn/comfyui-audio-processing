@@ -12,7 +12,7 @@ class MelScaleFilterBank:
                              "f_max": ("FLOAT", {"default": 44100.0, "min": 0.0, "max": 96000.0, "step": 1.0}),
                              "n_mels": ("INT", {"default": 128, "min": 1, "max": 2**32})}}
 
-    CATEGORY = "AudioProcessing/filterbank"
+    CATEGORY = "audio processing/filter bank"
 
     RETURN_TYPES = ("FILTER_BANK", )
     FUNCTION = "fbank"
@@ -42,7 +42,7 @@ class ApplyFilterBank:
         return {"required": {"spectrogram": ("SPECT",),
                              "fbank": ("FILTER_BANK",)}}
 
-    CATEGORY = "AudioProcessing/filterbank"
+    CATEGORY = "audio processing/filter bank"
 
     RETURN_TYPES = ("SPECT", )
     FUNCTION = "filter"
