@@ -4,6 +4,7 @@
 - [Audio Waveforms](#audio-waveforms)
 - [Spectrograms](#spectrograms)
   - [Complex-Valued Spectrograms](#complex-valued-spectrograms)
+  - [Real-Valued Spectrograms](#real-valued-spectrograms)
 - [Filter Banks](#filter-banks)
 - [License](#license)
 
@@ -37,6 +38,10 @@ A spectrogram (`SPECT`) can be one of three types:
 ### Complex-Valued Spectrograms
 
 [![Generating, plotting, and inverting a complex-valued spectrogram](workflows/spectrogram/complex-valued-spectrogram.png)](workflows/spectrogram/complex-valued-spectrogram.json)
+
+### Real-Valued Spectrograms
+
+[![Generating, plotting, and inverting a real-valued spectrogram](workflows/spectrogram/real-valued-spectrogram.png)](workflows/spectrogram/real-valued-spectrogram.json)
 
 ## Filter Banks
 
