@@ -1,33 +1,25 @@
 # comfyui-audio-plugin
 > A collection of nodes for working with audio data.
 
-- [Workflows](#workflows)
-  - [Plot Waveform](#plot-waveform)
-- [Nodes](#nodes)
-  - [Audio Waveforms](#audio-waveforms)
-  - [Spectrograms](#spectrograms)
-  - [Filter Banks](#filter-banks)
+- [Audio Waveforms](#audio-waveforms)
+- [Spectrograms](#spectrograms)
+- [Filter Banks](#filter-banks)
 - [License](#license)
 
 > [!NOTE]
 >
 > This plugin is compatible with the ComfyUI audio nodes.
 
-## Workflows
-
-### Plot Waveform
-[![Plotting an audio waveform](workflows/waveform/plot-waveform.png)](workflows/waveform/plot-waveform.json)
-
-## Nodes
-
-### Audio Waveforms
+## Audio Waveforms
 
 | Name                 | Description                                                                         |
 |----------------------|-------------------------------------------------------------------------------------|
 | Load Audio From Path | Same as "Load Audio" but loads from a local path instead of an uploaded audio file. |
 | Plot Waveform        | Plots the waveform of an `AUDIO` object.                                            |
 
-### Spectrograms
+[![Plotting an audio waveform](workflows/waveform/plot-waveform.png)](workflows/waveform/plot-waveform.json)
+
+## Spectrograms
 
 | Name                | Description                                                                    |
 |---------------------|--------------------------------------------------------------------------------|
@@ -41,7 +33,7 @@ A spectrogram (`SPECT`) can be one of three types:
 2. `magnitude` &ndash; a real valued spectrogram that is the absolute value of the `complex` spectrogram (power 1);
 3. `power` &ndash; a real valued spectrogram that is the square of the `magnitude` spectrogram (power 2);
 
-### Filter Banks
+## Filter Banks
 
 | Name                  | Description                                         |
 |-----------------------|-----------------------------------------------------|
