@@ -1,30 +1,40 @@
 # comfyui-audio-plugin
 > A collection of nodes for working with audio data.
 
-- [I/O](#io)
-- [Filter Banks](#filter-banks)
-- [Plotting](#plotting)
-- [Spectrogram](#spectrogram)
+- [Workflows](#workflows)
+  - [Plot Waveform](#plot-waveform)
+- [Nodes](#nodes)
+  - [I/O](#io)
+  - [Filter Banks](#filter-banks)
+  - [Plotting](#plotting)
+  - [Spectrogram](#spectrogram)
 - [License](#license)
 
 > [!NOTE]
 >
 > This plugin is compatible with the ComfyUI audio nodes.
 
-## I/O
+## Workflows
+
+### Plot Waveform
+[![Plotting an audio waveform](workflows/waveform/plot-waveform.png)](workflows/waveform/plot-waveform.json)
+
+## Nodes
+
+### I/O
 
 | Name                 | Description                                                                         |
 |----------------------|-------------------------------------------------------------------------------------|
 | Load Audio From Path | Same as "Load Audio" but loads from a local path instead of an uploaded audio file. |
 
-## Filter Banks
+### Filter Banks
 
 | Name                  | Description                                         |
 |-----------------------|-----------------------------------------------------|
 | Mel-scale Filter Bank | Create a mel-scale filter bank.                     |
 | Apply Filter Bank     | Apply the specified filter bank to the spectrogram. |
 
-## Plotting
+### Plotting
 
 | Name                       | Description                                |
 |----------------------------|--------------------------------------------|
@@ -32,7 +42,7 @@
 | Plot Spectrogram           | Plots the spectrogram of a `SPECT` object. |
 | Plot Filter Bank           | Plots the `FILTER_BANK` object.            |
 
-## Spectrogram
+### Spectrogram
 
 | Name                  | Description                                                                    |
 |-----------------------|--------------------------------------------------------------------------------|
