@@ -25,7 +25,7 @@ class PlotWaveform:
                              "ylabel": ("STRING", {"default": "Amplitude"}),
                              "show_grid": ("BOOLEAN", {"default": True}),}}
 
-    CATEGORY = "audio processing/plot"
+    CATEGORY = "audio processing"
 
     RETURN_TYPES = ("IMAGE", )
     FUNCTION = "plot"
@@ -58,7 +58,7 @@ class PlotSpectrogram:
                              "ylabel": ("STRING", {"default": "Frequency (Hz)"}),
                              "show_grid": ("BOOLEAN", {"default": False}),}}
 
-    CATEGORY = "audio processing/plot"
+    CATEGORY = "audio processing/spectrogram"
 
     RETURN_TYPES = ("IMAGE", )
     FUNCTION = "plot"
@@ -97,7 +97,7 @@ class PlotFilterBank:
                              "xlabel": ("STRING", {"default": "filter bin"}),
                              "ylabel": ("STRING", {"default": "frequency bin"}),}}
 
-    CATEGORY = "audio processing/plot"
+    CATEGORY = "audio processing/filter bank"
 
     RETURN_TYPES = ("IMAGE", )
     FUNCTION = "plot"
