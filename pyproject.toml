@@ -1,6 +1,6 @@
 [project]
 name = "comfyui-audio-processing"
-description = "This plugin is compatible with the ComfyUI audio nodes."
+description = "A collection of nodes for working with audio data."
 version = "1.0.0"
 license = {file = "LICENSE"}
 
@@ -9,6 +9,6 @@ Repository = "https://github.com/rhdunn/comfyui-audio-processing"
 #  Used by Comfy Registry https://comfyregistry.org
 
 [tool.comfy]
-PublisherId = ""
+PublisherId = "rhdunn"
 DisplayName = "comfyui-audio-processing"
 Icon = ""
